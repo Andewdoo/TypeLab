@@ -1,0 +1,361 @@
+/* ...existing code... */
+
+/* make the typing card span full viewport width and add vertical gaps
+   so there's visible margin between the fixed topbar and subbar */
+.typing-card {
+  background: #ffffff;
+  color: #111827;
+  border-radius: 0;                /* edge-to-edge horizontally */
+  padding: 20px;                   /* inner padding so content doesn't touch edges */
+  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06), 0 1px 2px rgba(17,24,39,0.04);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+  /* span full width */
+  position: fixed;
+  left: 0;
+  right: 0;
+
+  /* topbar / subbar heights + extra vertical gap: adjust values if your bars differ */
+  /* topbar height assumed 60px, subbar height assumed 84px, gap 12px */
+  top: calc(60px + 12px);
+  bottom: calc(84px + 12px);
+
+  margin: 0;
+  z-index: 30;
+
+  /* full-width layout: card content constrained by inner container if needed */
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  /* layout inside the card */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: auto;
+}
+
+/* ensure the typing area inside the card grows to fill available height */
+.typing-wrapper {
+  position: relative;
+  width: 100%;
+  /* allow wrapper to expand and scroll inside the card */
+  flex: 1 1 auto;
+  min-height: 0; /* important for flex children to allow proper overflow */
+  box-sizing: border-box;
+}
+
+/* the visible display should scroll if content grows */
+.typing-display {
+  /* keep existing visual styles... */
+  overflow: auto;
+  max-height: 100%;
+  box-sizing: border-box;
+}
+
+/* keep usable layout on small screens: center the card and remove fixed positioning */
+@media (max-width: 900px) {
+  .typing-card {
+    position: static;
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(100% - 50px);
+    max-width: 640px;
+    height: auto;
+    bottom: auto;
+    top: auto;
+    overflow: visible;
+  }
+
+  .typing-wrapper {
+    min-height: 140px;
+    flex: none;
+  }
+}
+
+.typing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.subtitle {
+  margin: 2px 0 0;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.stats {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.badge {
+  background: #f3f4f6;
+  border-radius: 999px;
+  padding: 6px 10px;
+  text-align: center;
+  min-width: 64px;
+}
+
+.stat-value {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+/* sample sentence */
+.sample {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 12px;
+  color: #111827;
+  margin-bottom: 12px;
+  border: 1px solid rgba(17,24,39,0.03);
+  font-size: 0.95rem;
+}
+
+/* input area */
+.typing-input {
+  width: 100%;
+  min-height: 96px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 10px;
+  font-size: 0.95rem;
+  color: #111827;
+  resize: vertical;
+  outline: none;
+  transition: box-shadow .15s ease, border-color .15s ease;
+}
+
+.typing-input:focus {
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.08);
+  border-color: #6366f1;
+}
+
+/* controls */
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn {
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #374151;
+  border: 1px solid rgba(17,24,39,0.04);
+}
+
+.btn-primary {
+  background: #111827;
+  color: #ffffff;
+}
+
+/* controls for game mode and time */
+.mode-controls, .time-controls {
+  display: inline-flex;
+  gap: 6px;
+  margin-right: 8px;
+  align-items: center;
+}
+
+.mode-controls .seg, .time-controls .seg {
+  background: #f3f4f6;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.85rem;
+}
+
+.mode-controls .seg.active, .time-controls .seg.active {
+  background: #111827;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(17,24,39,0.06);
+}
+
+/* stats-and-controls container */
+.stats-and-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* timer */
+.timer {
+  margin-left: 12px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* wrapper that contains the visible text layer and the hidden textarea overlay */
+.typing-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 120px; /* ensure enough vertical space to avoid overlay clipping */
+  box-sizing: border-box;
+}
+
+/* visible text area (like Monkeytype) */
+/* make font, padding and line-height explicit and identical to the textarea overlay */
+.typing-display {
+  position: relative;        /* needed so the tracker (pseudo) can position correctly */
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 12px;
+  color: #111827;
+  border: 1px solid rgba(17,24,39,0.03);
+  font-size: 16px;            /* explicit size */
+  line-height: 1.6;          /* explicit line-height */
+  min-height: 120px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow: auto;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;         /* prevent selecting the display layer */
+  caret-color: transparent;  /* hide caret on display layer */
+  box-sizing: border-box;
+}
+
+/* current indicator: vertical pastel-blue tracker (replaces underline) */
+@keyframes caret-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.char.current {
+  position: relative;        /* anchor for pseudo-element */
+  text-decoration: none;
+  background: transparent;
+}
+
+/* vertical tracker placed at the start of the current character */
+.char.current::before {
+  content: "";
+  position: absolute;
+  left: 0;                   /* positioned at the left edge of the current char */
+  top: 10%;
+  bottom: 10%;
+  width: 2px;
+  background: #0c6bdf;       /* pastel blue */
+  border-radius: 2px;
+  animation: caret-blink 1s steps(1) infinite;
+  z-index: 3;
+}
+
+/* group words so wrapping happens at the word boundary */
+.word {
+  display: inline-block;   /* keep the word together when wrapping */
+  white-space: nowrap;     /* do not break inside the word */
+  vertical-align: top;
+}
+
+/* very long words may need to break to avoid overflow */
+.word.long {
+  white-space: normal;     /* allow normal wrapping inside the long word */
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* small spacing so characters don't visually collide; use inline display for chars */
+.char {
+  display: inline;
+  white-space: pre;
+  padding-right: 0.02em;
+  box-sizing: border-box;
+
+  /* smooth color/background transitions only */
+  transition: background-color 260ms ease, color 180ms ease;
+}
+
+/* Only color the glyphs themselves — remove any background/padding so there's no colored outline */
+.char.correct {
+  color: #059669;
+  background: transparent;
+  /* keep subtle transition for color changes */
+  transition: color 180ms ease;
+}
+
+.char.incorrect {
+  color: #b91c1c;
+  background: transparent;
+  transition: color 180ms ease;
+}
+
+/* remove animations on recent chars: keep no movement, no shake/pop */
+.char.recent.correct,
+.char.recent.incorrect {
+  animation: none;
+}
+
+/* invisible textarea overlay that captures input and shows caret */
+/* match font/padding/line-height exactly with typing-display so caret lines up */
+.typing-input-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  color: transparent;          /* hide typed characters */
+  caret-color: transparent;     /* hide the blinking caret/vertical line */
+  border: none;
+  resize: none;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.6;
+  outline: none;
+  overflow: auto;
+  z-index: 2;
+  box-sizing: border-box;
+  -webkit-text-security: none;
+}
+
+/* hide selection highlight on textarea so it doesn't obscure display */
+.typing-input-overlay::selection { background: transparent; }
+.typing-input-overlay::-moz-selection { background: transparent; }
+
+/* remove default textarea outline on focus but keep keyboard accessibility */
+.typing-input-overlay:focus { box-shadow: none; }
+
+/* keep original visible sample removed; hide old .sample if present */
+.sample { display: none; }
+
+/* responsive tweaks */
+@media (max-width: 900px) {
+  .typing-display { min-height: 140px; }
+  .typing-input-overlay { font-size: 15px; line-height: 1.6; padding: 12px; }
+}
+
+/* ...existing code... */

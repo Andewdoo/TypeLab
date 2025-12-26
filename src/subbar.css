@@ -1,0 +1,122 @@
+/* ...existing code... */
+
+.subbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;                /* above page content, below topbar (topbar uses 999) */
+  padding: 12px 0;
+  pointer-events: none;       /* allow clicks only on the inner card */
+  box-sizing: border-box;
+}
+
+.subbar-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.subbar-card {
+  pointer-events: auto;
+  background: #ffffff;
+  color: #111827;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -8px 30px rgba(17,24,39,0.06), 0 -1px 2px rgba(17,24,39,0.04);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* new stats area */
+.subbar-stats {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: 12px;
+  margin-right: 8px;
+}
+
+/* badges reused for stats */
+.subbar .badge {
+  background: #f3f4f6;
+  border-radius: 999px;
+  padding: 6px 10px;
+  text-align: center;
+  min-width: 64px;
+}
+
+.subbar .stat-value {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+.subbar .stat-label {
+  font-size: 0.7rem;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+/* left content */
+.subbar-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.subbar-title {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.subbar-sub {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+/* actions */
+.subbar-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* reuse project's .btn, .btn-primary, .btn-ghost if present; fallbacks */
+.subbar .btn {
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+}
+
+.subbar .btn-ghost {
+  background: transparent;
+  color: #374151;
+  border: 1px solid rgba(17,24,39,0.04);
+}
+
+.subbar .btn-primary {
+  background: #111827;
+  color: #ffffff;
+}
+
+/* responsive: compact padding on small screens */
+@media (max-width: 720px) {
+  .subbar-inner { padding: 0 12px; }
+  .subbar-card { padding: 10px 12px; flex-wrap: wrap; }
+  .subbar-stats { order: 3; width: 100%; justify-content: flex-start; margin-left: 0; margin-top: 8px; }
+  .subbar-actions { order: 2; }
+}
+
+/* ...existing code... */

@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# Keep the .gitignore file itself
+!.gitignore
+
+# Allow src directory and all its contents
+!/src/
+!/src/**
+
+# Allow index.htm at repo root
+!/index.htm

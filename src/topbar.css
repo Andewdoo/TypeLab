@@ -1,0 +1,179 @@
+.topbar {
+  position: fixed;           /* stick to top of viewport */
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  color: #111827;
+  border-radius: 0;
+  padding: 7px 0;            /* slightly increased vertical padding */
+  height: 60px;             /* slightly taller */
+  box-shadow: 0 8px 30px rgba(17,24,39,0.06); /* gentle full-width shadow */
+  z-index: 999;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  box-sizing: border-box;
+}
+
+/* center the inner content and keep the card-like feel */
+.topbar-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* keep any center content centered */
+  gap: 12px;
+  height: 100%;
+  position: relative; /* allow absolute placement of brand and actions */
+}
+
+/* brand */
+.brand {
+  position: absolute;
+  left: -40px; /* tweak to move further left/right */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 0; /* ensure no extra offset */
+}
+
+.logo {
+  width: 34px;              /* match slightly taller bar */
+  height: 34px;
+  flex: 0 0 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-text .app-name {
+  font-weight: 700;
+  color: #111827;
+  font-size: 1.06rem;       /* slightly larger text */
+  line-height: 1;
+}
+
+.brand-text .app-sub {
+  font-size: 0.80rem;        /* slightly larger */
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+/* actions */
+.topbar-actions {
+  position: absolute;
+  right: 16px; /* tweak to move further right/left */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* segmented mode toggle */
+.mode-toggle {
+  display: inline-flex;
+  background: #f3f4f6;
+  border-radius: 999px;
+  padding: 4px;
+  gap: 4px;
+  align-items: center;
+}
+
+.mode-toggle .seg {
+  background: transparent;
+  border: none;
+  padding: 6px 12px;        /* maintain comfortable click area */
+  border-radius: 999px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  font-size: 0.96rem;
+}
+
+.mode-toggle .seg.active {
+  background: #111827;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(17,24,39,0.08);
+}
+
+/* ensure profile menu is positioned relative to the profile container */
+.profile {
+  position: relative;
+}
+
+/* avatar / profile */
+.avatar-btn {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;              /* slightly larger avatar */
+  height: 34px;
+  border-radius: 999px;
+  background: linear-gradient(180deg,#111827,#374151);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.02rem;           /* slightly larger text inside avatar */
+  box-shadow: 0 1px 2px rgba(17,24,39,0.08);
+}
+
+/* menu */
+.profile-menu {
+  position: absolute;
+  right: 10px;
+  margin-top: 8px;          /* slightly increase menu gap so it aligns with taller bar */
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(17,24,39,0.08), 0 1px 2px rgba(17,24,39,0.04);
+  padding: 8px;
+  min-width: 180px;
+  z-index: 60;
+  border: 1px solid rgba(17,24,39,0.03);
+}
+
+.menu-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  background: transparent;
+  border: none;
+  color: #111827;
+  font-size: 0.95rem;        /* slightly larger */
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.menu-item:hover { background: #f3f4f6; }
+
+.menu-sep {
+  border: none;
+  height: 1px;
+  background: rgba(17,24,39,0.04);
+  margin: 6px 0;
+}
+
+.muted {
+  color: #6b7280;
+  font-size: 0.85rem;
+  padding: 6px 10px;
+}
+
+/* responsive tweaks */
+@media (max-width: 520px) {
+  .brand-text .app-sub { display: none; }
+  .mode-toggle .seg { padding: 6px 8px; font-size: 0.9rem; }
+}
+
+@media (max-width: 720px) {
+  .topbar-inner { padding: 0 12px; }
+  .brand { left: 12px; }
+  .topbar-actions { right: 12px; }
+}
