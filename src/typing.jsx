@@ -27,6 +27,7 @@ export default function TypingCard() {
   const displayRef = useRef(null)
   const intervalRef = useRef(null)
   const endTimeoutRef = useRef(null)
+  const trackerRef = useRef(null)
 
   // build sample when mode changes
   useEffect(() => {
@@ -50,6 +51,45 @@ export default function TypingCard() {
       displayRef.current.scrollLeft = inputRef.current.scrollLeft
     }
   }, [value, elapsed])
+
+  // render words (existing logic relies on SAMPLE -> use sample)
+  const typed = Array.from(value)
+
+  // Update tracker position based on current character
+  useEffect(() => {
+    if (!displayRef.current) return
+    
+    const trackerEl = displayRef.current.querySelector('.tracker')
+    if (!trackerEl) return
+    
+    const currentCharEl = displayRef.current.querySelector('.char.current')
+    
+    if (currentCharEl) {
+      const charRect = currentCharEl.getBoundingClientRect()
+      const displayRect = displayRef.current.getBoundingClientRect()
+      const left = charRect.left - displayRect.left + displayRef.current.scrollLeft
+      const top = charRect.top - displayRect.top + displayRef.current.scrollTop
+      trackerEl.style.left = `${left}px`
+      trackerEl.style.top = `${top}px`
+      trackerEl.style.opacity = '1'
+    } else if (typed.length === 0) {
+      // Position at start if nothing typed
+      const firstChar = displayRef.current.querySelector('.char')
+      if (firstChar) {
+        const charRect = firstChar.getBoundingClientRect()
+        const displayRect = displayRef.current.getBoundingClientRect()
+        const left = charRect.left - displayRect.left + displayRef.current.scrollLeft
+        const top = charRect.top - displayRect.top + displayRef.current.scrollTop
+        trackerEl.style.left = `${left}px`
+        trackerEl.style.top = `${top}px`
+        trackerEl.style.opacity = '1'
+      }
+    } else if (typed.length >= sample.length) {
+      // Hide only when completely finished
+      trackerEl.style.opacity = '0'
+    }
+    // Otherwise keep tracker visible at its last position
+  }, [value, sample, typed.length])
 
   // elapsed timer
   useEffect(() => {
@@ -131,9 +171,6 @@ export default function TypingCard() {
     }
   }, [wpm, accuracy])
 
-  // render words (existing logic relies on SAMPLE -> use sample)
-  const words = sample.split(' ')
-  const typed = Array.from(value)
   const lastIndex = Math.max(typed.length - 1, -1)
 
   return (
@@ -168,6 +205,7 @@ export default function TypingCard() {
         onClick={() => { if (!finished) inputRef.current?.focus() }}
       >
         <div className="typing-display" ref={displayRef} aria-hidden="true">
+          <span className="tracker" />
           {Array.from(sample).map((ch, i) => {
             const typedChar = typed[i]
             let cls = 'char'

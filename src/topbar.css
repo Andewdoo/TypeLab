@@ -14,6 +14,12 @@
   box-sizing: border-box;
 }
 
+[data-theme="dark"] .topbar {
+  background: #1e293b;
+  color: #f1f5f9;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
 /* center the inner content and keep the card-like feel */
 .topbar-inner {
   max-width: 1400px;
@@ -59,6 +65,10 @@
   margin-top: 2px;
 }
 
+[data-theme="dark"] .brand-text .app-sub {
+  color: #94a3b8;
+}
+
 /* actions */
 .topbar-actions {
   position: absolute;
@@ -66,6 +76,46 @@
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+/* game mode selector (practice/ranked) */
+.mode-selector {
+  display: inline-flex;
+  background: #f3f4f6;
+  border-radius: 999px;
+  padding: 4px;
+  gap: 4px;
+  align-items: center;
+}
+
+[data-theme="dark"] .mode-selector {
+  background: #334155;
+}
+
+.mode-selector .seg {
+  background: transparent;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  font-size: 0.96rem;
+}
+
+[data-theme="dark"] .mode-selector .seg {
+  color: #cbd5e1;
+}
+
+.mode-selector .seg.active {
+  background: #111827;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(17,24,39,0.08);
+}
+
+[data-theme="dark"] .mode-selector .seg.active {
+  background: #f1f5f9;
+  color: #111827;
 }
 
 /* segmented mode toggle */
@@ -76,6 +126,10 @@
   padding: 4px;
   gap: 4px;
   align-items: center;
+}
+
+[data-theme="dark"] .mode-toggle {
+  background: #334155;
 }
 
 .mode-toggle .seg {
@@ -89,10 +143,19 @@
   font-size: 0.96rem;
 }
 
+[data-theme="dark"] .mode-toggle .seg {
+  color: #cbd5e1;
+}
+
 .mode-toggle .seg.active {
   background: #111827;
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(17,24,39,0.08);
+}
+
+[data-theme="dark"] .mode-toggle .seg.active {
+  background: #f1f5f9;
+  color: #111827;
 }
 
 /* ensure profile menu is positioned relative to the profile container */
@@ -151,7 +214,13 @@
   border-radius: 8px;
 }
 
+[data-theme="dark"] .menu-item {
+  color: #f1f5f9;
+}
+
 .menu-item:hover { background: #f3f4f6; }
+
+[data-theme="dark"] .menu-item:hover { background: #334155; }
 
 .menu-sep {
   border: none;

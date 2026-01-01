@@ -35,6 +35,12 @@
   box-sizing: border-box;
 }
 
+[data-theme="dark"] .subbar-card {
+  background: #1e293b;
+  color: #f1f5f9;
+  box-shadow: 0 -8px 30px rgba(0,0,0,0.4), 0 -1px 2px rgba(0,0,0,0.2);
+}
+
 /* new stats area */
 .subbar-stats {
   display: flex;
@@ -53,16 +59,28 @@
   min-width: 64px;
 }
 
+[data-theme="dark"] .subbar .badge {
+  background: #334155;
+}
+
 .subbar .stat-value {
   font-weight: 700;
   font-size: 0.95rem;
   color: #111827;
 }
 
+[data-theme="dark"] .subbar .stat-value {
+  color: #f1f5f9;
+}
+
 .subbar .stat-label {
   font-size: 0.7rem;
   color: #6b7280;
   margin-top: 2px;
+}
+
+[data-theme="dark"] .subbar .stat-label {
+  color: #94a3b8;
 }
 
 /* left content */
@@ -77,10 +95,22 @@
   line-height: 1;
 }
 
+[data-theme="dark"] .subbar-title {
+  color: #f1f5f9;
+}
+
 .subbar-sub {
   font-size: 0.85rem;
   color: #6b7280;
   margin-top: 2px;
+}
+
+[data-theme="dark"] .subbar-sub {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .subbar-sub {
+  color: #94a3b8;
 }
 
 /* actions */

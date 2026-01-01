@@ -3,6 +3,7 @@ import './topbar.css'
 
 export default function TopBar() {
   const [mode, setMode] = useState('light')
+  const [gameMode, setGameMode] = useState('practice')
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
 
@@ -17,7 +18,11 @@ export default function TopBar() {
   useEffect(() => {
     const prev = document.body.style.backgroundColor
     document.body.style.backgroundColor = mode === 'light' ? '#f9fafb' : '#0f172a'
-    return () => { document.body.style.backgroundColor = prev }
+    document.documentElement.setAttribute('data-theme', mode)
+    return () => { 
+      document.body.style.backgroundColor = prev
+      document.documentElement.removeAttribute('data-theme')
+    }
   }, [mode])
 
   return (
@@ -38,6 +43,25 @@ export default function TopBar() {
         </div>
 
         <div className="topbar-actions">
+          <div className="mode-selector" role="toolbar" aria-label="Game mode">
+            <button
+              className={`seg ${gameMode === 'practice' ? 'active' : ''}`}
+              onClick={() => setGameMode('practice')}
+              type="button"
+              aria-pressed={gameMode === 'practice'}
+            >
+              Practice
+            </button>
+            <button
+              className={`seg ${gameMode === 'ranked' ? 'active' : ''}`}
+              onClick={() => setGameMode('ranked')}
+              type="button"
+              aria-pressed={gameMode === 'ranked'}
+            >
+              Ranked
+            </button>
+          </div>
+
           <div className="mode-toggle" role="toolbar" aria-label="Theme selector">
             <button
               className={`seg ${mode === 'light' ? 'active' : ''}`}

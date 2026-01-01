@@ -39,7 +39,6 @@ export default function SubBar() {
           <div className="subbar-actions" aria-hidden={false}>
             <button className="btn btn-ghost" type="button">New Session</button>
             <button className="btn" type="button">Stats</button>
-            <button className="btn btn-primary" type="button">Start</button>
           </div>
         </div>
       </div>
