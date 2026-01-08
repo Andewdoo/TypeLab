@@ -1,0 +1,178 @@
+.signup-page {
+	display: grid;
+	place-items: center;
+	width: 100vw;
+	height: 100dvh;
+	overflow: hidden;
+	margin: 0;
+	padding: 20px 0;
+	background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.signup-card {
+	background: rgba(254, 254, 254, 0.95);
+	backdrop-filter: blur(10px);
+	padding: 10px 10px;
+	border-radius: 12px;
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+	width: 100%;
+	max-width: 340px;
+	max-height: calc(100dvh - 20px);
+	overflow-y: auto;
+}
+
+.signup-card h1 {
+	margin: 0 0 4px 0;
+	font-size: 1.25rem;
+	text-align: center;
+	color: #111;
+}
+
+.subtitle {
+	margin: 0 0 14px 0;
+	text-align: center;
+	color: black;
+	font-size: 0.8rem;
+}
+
+.signup-form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.field {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.field-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.field label {
+	font-size: 0.8rem;
+	color: black;
+}
+
+.forgot-link {
+	font-size: 0.8rem;
+	color: #ff6b6b;
+	text-decoration: none;
+}
+
+.forgot-link:hover {
+	text-decoration: underline;
+}
+
+.field input {
+	padding: 8px 10px;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	font-size: 0.88rem;
+	outline: none;
+	transition: border-color 0.2s;
+	background-color: white;
+	color: black;
+}
+
+.field input:focus {
+	border-color: #666;
+}
+
+.signup-btn {
+	background: black;
+	color: white;
+	border: none;
+	padding: 9px;
+	border-radius: 6px;
+	font-size: 0.88rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.2s;
+	margin-top: 2px;
+}
+
+.signup-btn:hover {
+	background: #111;
+}
+
+.alt-text {
+	margin: 0;
+	text-align: center;
+	font-size: 0.8rem;
+	color: #666;
+}
+
+.link {
+	color: #ff6b6b;
+	text-decoration: none;
+}
+
+.link:hover {
+	text-decoration: underline;
+}
+
+.divider {
+	margin: 4px 0;
+	text-align: center;
+	font-size: 0.75rem;
+	color: #999;
+}
+
+.social-buttons {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
+.social-btn {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: 1px solid #ddd;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.2s, opacity 0.2s;
+	background: white;
+}
+
+.social-btn:hover {
+	transform: scale(1.05);
+	opacity: 0.9;
+}
+
+.social-btn img {
+	width: 18px;
+	height: 18px;
+}
+
+.social-btn.facebook {
+	background: white;
+	border: 1px solid #ddd;
+}
+
+.social-btn.apple {
+	background: white;
+	border: 1px solid #ddd;
+}
+
+.social-btn.google {
+	background: white;
+	border: 1px solid #ddd;
+}
+
+html, body {
+	overflow: hidden;
+	height: 100dvh;
+	margin: 0;
+	padding: 0;
+}

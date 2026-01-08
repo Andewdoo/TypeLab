@@ -46,7 +46,7 @@ export default function TopBar() {
           <div className="mode-selector" role="toolbar" aria-label="Game mode">
             <button
               className={`seg ${gameMode === 'practice' ? 'active' : ''}`}
-              onClick={() => setGameMode('practice')}
+              onClick={() => { setGameMode('practice'); window.location.hash = '' }}
               type="button"
               aria-pressed={gameMode === 'practice'}
             >
@@ -98,6 +98,15 @@ export default function TopBar() {
                 <div className="menu-item muted">Signed in as <strong>Ali</strong></div>
                 <button className="menu-item" type="button">Profile</button>
                 <button className="menu-item" type="button">Settings</button>
+                <hr className="menu-sep" />
+                <button className="menu-item" type="button" onClick={() => { window.location.hash = '#/signin'; setOpen(false) }}>Log in</button>
+                <button
+                  className="menu-item"
+                  type="button"
+                  onClick={() => { window.location.hash = '#/signup'; setOpen(false) }}
+                >
+                  Sign up
+                </button>
                 <hr className="menu-sep" />
                 <button className="menu-item" type="button">Sign out</button>
               </div>
