@@ -34,10 +34,10 @@ export default function Signin() {
 							<img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" />
 						</button>
 						<button type="button" className="social-btn apple">
-							<img src="https://cdn-icons-png.flaticon.com/512/2702/2702602.png" alt="Apple" />
+							<img src="https://cdn-icons-png.flaticon.com/512/2702/2702602.png" alt="Google" />
 						</button>
 						<button type="button" className="social-btn google">
-							<img src="https://cdn-icons-png.flaticon.com/512/2504/2504914.png" alt="Google" />
+							<img src="apple-logo.png" alt="Apple" />
 						</button>
 					</div>
 				</form>

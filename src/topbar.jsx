@@ -1,9 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
 import './topbar.css'
+import { initTheme, applyTheme } from './dl.js'
 
 export default function TopBar() {
-  const [mode, setMode] = useState('light')
-  const [gameMode, setGameMode] = useState('practice')
+  const [mode, setMode] = useState(() => initTheme())
+  const [gameMode, setGameMode] = useState(() => 
+    window.location.hash === '#/ranked' ? 'ranked' : 'practice'
+  )
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
 
@@ -16,13 +19,15 @@ export default function TopBar() {
   }, [])
 
   useEffect(() => {
-    const prev = document.body.style.backgroundColor
-    document.body.style.backgroundColor = mode === 'light' ? '#f9fafb' : '#0f172a'
-    document.documentElement.setAttribute('data-theme', mode)
-    return () => { 
-      document.body.style.backgroundColor = prev
-      document.documentElement.removeAttribute('data-theme')
+    function onHashChange() {
+      setGameMode(window.location.hash === '#/ranked' ? 'ranked' : 'practice')
     }
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [])
+
+  useEffect(() => {
+    applyTheme(mode)
   }, [mode])
 
   return (
@@ -46,7 +51,7 @@ export default function TopBar() {
           <div className="mode-selector" role="toolbar" aria-label="Game mode">
             <button
               className={`seg ${gameMode === 'practice' ? 'active' : ''}`}
-              onClick={() => { setGameMode('practice'); window.location.hash = '' }}
+              onClick={() => window.location.hash = ''}
               type="button"
               aria-pressed={gameMode === 'practice'}
             >
@@ -54,7 +59,7 @@ export default function TopBar() {
             </button>
             <button
               className={`seg ${gameMode === 'ranked' ? 'active' : ''}`}
-              onClick={() => setGameMode('ranked')}
+              onClick={() => window.location.hash = '#/ranked'}
               type="button"
               aria-pressed={gameMode === 'ranked'}
             >

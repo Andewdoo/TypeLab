@@ -1,0 +1,133 @@
+.leaderboard-dropdown-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(17, 24, 39, 0.08);
+  margin: 0 15px 24px 15px;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .leaderboard-dropdown-card {
+  background: #1e293b;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.leaderboard-dropdown-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+.leaderboard-dropdown-header:focus {
+  outline: 2px solid #111827;
+  outline-offset: -7px;
+}
+
+[data-theme="dark"] .leaderboard-dropdown-header:focus {
+  outline: 2px solid #f1f5f9;
+  outline-offset: -7px;
+}
+
+.leaderboard-dropdown-header:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.leaderboard-dropdown-header:active {
+  outline: none;
+}
+
+.leaderboard-dropdown-header:hover {
+  background: #f9fafb;
+}
+
+[data-theme="dark"] .leaderboard-dropdown-header:hover {
+  background: #0f172a;
+}
+
+.leaderboard-dropdown-preview {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+.leaderboard-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 3px solid #FFD700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 215, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.leaderboard-preview-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.leaderboard-preview-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1;
+}
+
+[data-theme="dark"] .leaderboard-preview-title {
+  color: #f1f5f9;
+}
+
+.leaderboard-preview-subtitle {
+  font-size: 1rem;
+  color: #6b7280;
+  line-height: 1;
+}
+
+[data-theme="dark"] .leaderboard-preview-subtitle {
+  color: #94a3b8;
+}
+
+.leaderboard-dropdown-content {
+  padding: 0 24px 24px 24px;
+  animation: slideDown 0.2s ease;
+  margin-top: 10px; /* space between title and content */
+}
+
+.dropdown-caret {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid currentColor;
+  transition: transform 0.2s ease;
+  transform-origin: center;
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+.dropdown-caret.open {
+  transform: rotate(180deg);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

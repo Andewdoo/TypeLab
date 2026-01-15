@@ -1,0 +1,16 @@
+/* Global dark/light theme variables and base styles */
+:root {
+	--bg: #f9fafb;
+	--text: #111827;
+}
+
+[data-theme="dark"] {
+	--bg: #1e293b;
+	--text: #f1f5f9;
+}
+
+html, body {
+	background-color: var(--bg);
+	color: var(--text);
+}
+

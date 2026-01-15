@@ -35,11 +35,6 @@ export default function SubBar() {
               <div className="stat-label">Accuracy</div>
             </div>
           </div>
-
-          <div className="subbar-actions" aria-hidden={false}>
-            <button className="btn btn-ghost" type="button">New Session</button>
-            <button className="btn" type="button">Stats</button>
-          </div>
         </div>
       </div>
     </div>

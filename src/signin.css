@@ -47,7 +47,7 @@
 .field {
 	display: flex;
 	flex-direction: column;
-	gap: 5px;
+	gap: 2px;
 }
 
 .field-header {
@@ -68,7 +68,7 @@
 }
 
 .forgot-link:hover {
-	text-decoration: underline;
+	color: #e63946;
 }
 
 .field input {
@@ -114,7 +114,7 @@
 }
 
 .link:hover {
-	text-decoration: underline;
+	color: #e63946;
 }
 
 .divider {

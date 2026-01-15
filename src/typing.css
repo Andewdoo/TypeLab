@@ -5,8 +5,8 @@
 .typing-card {
   background: #ffffff;
   color: #111827;
-  border-radius: 0;
-  padding: 20px;
+  border-radius: 12px;
+  padding: 12px;
   box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06), 0 1px 2px rgba(17,24,39,0.04);
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 
@@ -24,7 +24,7 @@
   /* layout inside the card */
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 6px;
   overflow: auto;
 }
 
@@ -72,8 +72,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 6px;
+  margin-bottom: 0;
 }
 
 .title {
@@ -187,79 +187,35 @@
 }
 
 [data-theme="dark"] .btn-primary {
-  background: #f1f5f9;
-  color: #111827;
+  background: #000000;
+  color: #ffffff;
 }
 
 /* controls for game mode and time */
-.mode-controls, .time-controls {
-  display: inline-flex;
-  gap: 6px;
-  margin-right: 8px;
-  align-items: center;
-}
-
-.mode-controls .seg, .time-controls .seg {
-  background: #f3f4f6;
-  border: none;
-  padding: 6px 8px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-weight: 600;
-  color: #374151;
-  font-size: 0.85rem;
-}
-
-[data-theme="dark"] .mode-controls .seg,
-[data-theme="dark"] .time-controls .seg {
-  background: #334155;
-  color: #cbd5e1;
-}
-
-.mode-controls .seg.active, .time-controls .seg.active {
-  background: #111827;
-  color: #fff;
-  box-shadow: 0 6px 18px rgba(17,24,39,0.06);
-}
-
-[data-theme="dark"] .mode-controls .seg.active,
-[data-theme="dark"] .time-controls .seg.active {
-  background: #f1f5f9;
-  color: #111827;
-}
-
-/* stats-and-controls container */
+/* time controls moved to ta.css */
 .stats-and-controls {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-/* timer */
-.timer {
-  margin-left: 12px;
-  font-weight: 700;
-  color: #111827;
-}
-
-
+/* timer styles moved to ta.css */
 
 /* visible text area (like Monkeytype) */
 /* make font, padding and line-height explicit and identical to the textarea overlay */
 .typing-display {
   position: relative;
-  background: #f9fafb;
-  border-radius: 8px;
-  padding: 16px;
+  background: transparent;
+  border-radius: 0;
+  padding: 12px 0;
   color: #111827;
-  border: 1px solid rgba(17,24,39,0.03);
+  border: none;
   font-size: 28px;
   line-height: 2;
-  min-height: 120px;
-  flex: 1 1 auto;
+  min-height: 180px;
   white-space: pre-wrap;
-  word-break: break-word;
-  overflow: auto;
+  word-wrap: break-word;
+  overflow: hidden;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -267,6 +223,7 @@
   caret-color: transparent;
   box-sizing: border-box;
   letter-spacing: 0.3px;
+  scroll-behavior: smooth;
   /* hide scrollbars */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
@@ -277,9 +234,9 @@
 }
 
 [data-theme="dark"] .typing-display {
-  background: #0f172a;
+  background: transparent;
   color: #f8fafc;
-  border-color: rgba(255,255,255,0.08);
+  border-color: transparent;
 }
 
 /* current indicator - remove pseudo-element approach */
@@ -300,7 +257,7 @@
   z-index: 3;
   box-shadow: 0 0 4px rgba(59,130,246,0.5);
   transition: all 150ms cubic-bezier(0.34, 1.56, 0.64, 1);
-  transform: translateY(0.1em);
+  transform: translate(-1px, 0.15em);
 }
 
 @keyframes caret-blink {
@@ -365,7 +322,7 @@
   caret-color: transparent;     /* hide the blinking caret/vertical line */
   border: none;
   resize: none;
-  padding: 16px;
+  padding: 12px;
   font-family: inherit;
   font-size: 28px;
   line-height: 2;

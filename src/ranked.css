@@ -1,0 +1,31 @@
+.ranked-page {
+  min-height: 100vh;
+  padding-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ranked-content {
+  text-align: center;
+  padding: 40px;
+}
+
+.ranked-content h1 {
+  font-size: 2rem;
+  color: #111827;
+  margin: 0 0 16px 0;
+}
+
+.ranked-content p {
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+[data-theme="dark"] .ranked-content h1 {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .ranked-content p {
+  color: #94a3b8;
+}
