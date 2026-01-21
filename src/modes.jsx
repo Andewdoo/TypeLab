@@ -1,5 +1,7 @@
 import './modes.css'
 import { WORD_LIST } from './wordList.js'
+import { Lyric_List } from './LyricLst.js'
+import { Poem_List } from './Poem_Lst.js'
 
 function randomWords(count) {
 	const words = []
@@ -9,12 +11,27 @@ function randomWords(count) {
 	return words.join(' ') + '.'
 }
 
+function randomPoem(count) {
+	const words = []
+	for (let i = 0; i < count; i++) {
+		words.push(Poem_List[Math.floor(Math.random() * Poem_List.length)])
+	}
+	return words.join(' ') + '.'
+}
+
+function randomLyric(count) {
+	const words = []
+	for (let i = 0; i < count; i++) {
+		words.push(Lyric_List[Math.floor(Math.random() * Lyric_List.length)])
+	}
+	return words.join(' ') + '.'
+}
 export function generateSample(gameMode) {
 	switch (gameMode) {
 		case 'poems':
-			return randomWords(80)
+			return randomPoem(1)
 		case 'songs':
-			return randomWords(90)
+			return randomLyric(1)
 		case 'words':
 			return randomWords(120)
 		case 'paragraphs':

@@ -61,15 +61,13 @@ export default function TypingCard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameMode])
 
-  // Detect when 2nd line is complete and shift display for words mode
   useEffect(() => {
     if (gameMode !== 'words' || !displayRef.current) return
     
     const display = displayRef.current
     const charSpans = Array.from(display.querySelectorAll('.char'))
     if (charSpans.length === 0) return
-    
-    // Find which visual line each character is on
+
     const lines = []
     let currentLine = []
     let prevTop = null
